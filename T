@@ -1,0 +1,326 @@
+Apache
+
+1.	sudo apt update
+Hiermee update je de nieuwe versie
+2.	sudo apt upgrade
+Hiermee upgrade je het
+3.	sudo apt install apache 2
+Hiermee installeer je apache2
+			
+					Poorten toevoegen aan de firewall 
+
+1. Sudo ufw allow 443 (hiermee voeg je poort 443 aan de firewall) 
+2. Sudo ufw allow 80 (hiermee voeg je poort 80 aan de firewall) 
+3. Sudo ufw allow ssh (hiermee voeg je ssh aan de firewall) 
+4. Sudo ufw enable (hiermee zet je de firewall aan) 
+
+ 
+php
+
+1.	sudo apt install php libapache2-mod-php
+Hiermee installeer je php
+2.	php –version
+Hiermee kun je controleren of je het juiste versie hebt geinstalleerd
+3.	sudo systemctl restart apache2
+Hiermee restart je apache2 
+4.	echo ‘<?php phpinfo();?>’ | sudo tee -a /var/www/html/phpinfo.php > /dev/null
+Hiermee maak je phpinfo.php aan dus als je php wilt openen dan tik je ipadrs/phpinfo.php in om php venster te krijgen.
+
+Mariadb
+
+1.	sudo apt install mariadb-server mariadb-client
+Hiermee installeer je mysql
+2.	sudo mysql_secure_installation
+Hiermee installeer je security op mysql
+
+nextcloud
+
+1.	sudo apt-get install apache2 mysql-server -y
+Hiermee installeer je nextcloud
+2.	sudo apt-get install php zip libapache2-mod-php php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip php-mysql php-bcmath php-gmp -y
+hiermee installeer je nextxloud configuratie
+3.	sudo mysql_secure_installation
+dit is voor de secOure
+4.	sudo mysql -u root -p
+5.	CREATE DATABASE nextcloud;
+6.	CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY 'PASSWORD';
+7.	GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
+8.	FLUSH PRIVILEGES;
+exit
+9.	wget https://download.nextcloud.com/server/releases/nextcloud-20.0.0.zip
+10.	unzip nextcloud-20.0.0.zip
+11.	sudo mv nextcloud /var/www/html/
+12.	sudo chown -R www-data:www-data /var/www/html/nextcloud
+13.	sudo nano /etc/apache2/sites-available/nextcloud.conf
+14.	in nano onderstaande script invullen
+15.	Alias /nextcloud "/var/www/html/nextcloud/"
+16.	<Directory /var/www/html/nextcloud/>
+17.	Options +FollowSymlinks
+18.	AllowOverride All
+19.	<IfModule mod_dav.c>
+20.	Dav off
+21.	</IfModule>
+22.	SetEnv HOME /var/www/html/nextcloud
+23.	SetEnv HTTP_HOME /var/www/html/nextcloud
+24.	</Directory>
+25.	
+26.	
+27.	sudo a2ensite nextcloud
+28.	sudo a2enmod rewrite headers env dir mime
+29.	sudo sed -i '/^memory_limit =/s/=.*/= 512M/' /etc/php/7.4/apache2/php.ini
+30.	sudo systemctl restart apache2
+
+virtual Host
+
+sudo mkdir -p /var/www/example.com/public_html
+sudo mkdir -p /var/www/test.com/public_html
+
+sudo chown -R $USER:$USER /var/www/example.com/public_html
+sudo chown -R $USER:$USER /var/www/test.com/public_html
+
+sudo chmod -R 755 /var/www
+
+nano /var/www/example.com/public_html/index.html
+
+<html>
+  <head>
+    <title>Welcome to Example.com!</title>
+  </head>
+  <body>
+    <h1>Success! The example.com virtual host is working!</h1>
+  </body>
+</html>
+
+cp /var/www/example.com/public_html/index.html /var/www/test.com/public_html/index.html
+
+nano /var/www/test.com/public_html/index.html
+
+<html>
+  <head>
+    <title>Welcome to Test.com!</title>
+  </head>
+  <body> <h1>Success! The test.com virtual host is working!</h1>
+  </body>
+</html>
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
+
+sudo nano /etc/apache2/sites-available/example.com.conf
+
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /var/www/example.com/public_html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+sudo cp /etc/apache2/sites-available/example.com.conf /etc/apache2/sites-available/test.com.conf
+
+sudo nano /etc/apache2/sites-available/test.com.conf
+
+<VirtualHost *:80>
+    ServerAdmin admin@test.com
+    ServerName test.com
+    ServerAlias www.test.com
+    DocumentRoot /var/www/test.com/public_html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+sudo a2ensite example.com.conf
+sudo a2ensite test.com.conf
+
+sudo a2dissite 000-default.conf
+
+sudo systemctl restart apache2
+
+sudo nano /etc/hosts
+
+127.0.0.1   localhost
+127.0.1.1   guest-desktop
+your_server_IP example.com
+your_server_IP test.com
+
+Test on client
+
+http://example.com
+http://test.com
+
+Behoefte analyse = behoefte van de klant
+memo- versie1 niet uitgewerkte feedback
+memo versie2 wel uitgewerkte feedback
+Geachte meneer Peen van Lint,
+
+hierbij ontvangt u de behoefte analyse. Ik heb u feedback  verwerkt. Graag ontvang ik van u akkoord om verder te kunnen met de volgende fase.
+Met vriendelijke groeten, 
+
+1	Opdracht
+Beschrijf hier de opdracht die geleid heeft tot het opstellen van deze behoefteanalyse.
+Het project wordt geleid door Serdar Van Ict bedrijf SPLIT waarbij een sportschool genaamd FitNu een betere ICT-Infrasctrutuur wilt. Daarvoor ga ik aan de hand van de behoefte van de klant de eisen en de wensen van de klant opstellen. 
+
+2	Aanleiding
+Beschrijf hier de reden waarom de opdracht gegeven is voor het opstellen van deze behoefteanalyse.
+FitNu heeft geen goede gestructuureelde beveiligde infrastructuur waar naar toe de opdracht leidt op een betere ICT infrastructuur. Aan de hand van de spreadsheet weet ik hoeveel client’s ze gebruiken en hoeveel printers er zijn, doormiddel van de plattegrond weet ik waar printers aanwezig zijn en welke niet. Op deze wijze heb ik een aantal printers toegevoegd aan elke afdeling waar printers noodzakelijk zijn.
+
+
+3	Knelpunten
+Beschrijf hier de problemen die bestaan in de huidige manier van werken.
+Na het inlezen van de infrastructuur van FitNU zijn er een paar te kort komingen aan het infrastructuur. 
+	
+Knelpunten:
+ geen backups
+geen goede opslag
+geen wifi dekking
+geen goede database, geheugen en opslag
+Geen toekomst gerichte infrastructuur 
+Geen toekomst gerichte uitbereiding van geheugen
+Geen backup-server
+geen beveiliging 
+
+
+ 
+4	Eisen/wensen
+Geef hier een overzicht van de eisen en wensen. Gebruik hiervoor de MoSCoW-onderverdeling.
+Nieuwe versie gebruiken op server en Client
+-rekening houden met uitbereiding qua aansluitingen voor Client
+-Rekening houden met opslag en geheugen voor data
+- Voldoende wifi dekking (Wifi versterker)
+-meer printers op elke afdeling 1 printer en meer lease
+-de klanten beschikken over eigen privacy
+-data moet overgezet kunnen worden naar een nieuwe omgeving
+-in de toekomst hightech apparaten aan de server
+-in de toekomst aan koppeling van fitnesapparatuur aan het netwerk voor verzamelen aan gebruiksdata
+ICT-afdeling
+ backup
+ goede opslag
+ wifi dekking
+ goede database, geheugen en opslag
+toekomst gerichte infrastructuur
+ backup-server
+beveiliging aan  de netwerkinfrastructuur
+
+ 
+
+
+
+
+
+
+8	Uit te voeren werkzaamheden
+Indien er gevraagd wordt om bepaalde werkzaamheden uit te voeren, worden deze hier vermeld.
+1	Informatie Behoefte FitNu!
+2	Functioneel ontwerp
+3	Technisch ontwerp
+4	Testomgeving
+
+9	Planning
+Maak een globale planning van het hele proces tot en met het realiseren van de testomgeving. 
+Volgn.	Opdrachten	Uitvoerder	Startdatum	Einddatum 	Duur	Kosten per uur
+1	Informatie Behoefte FitNu!	Serdar	25-10-21	28-10-21	2 uur	10,-
+2	Functioneel ontwerp	Serdar	28-10-21	1-11-21	2 uur	10,-
+3	Technisch ontwerp	Serdar	2-11-21	4-11-21	2 uur	10,-
+4	Testomgeving	Serdar	5-11-21	7-11-21	6 uur	10,-
+
+
+
+
+Functioneel aan de hand van de behoefte de functionaliteit uitleggen, waar het voor dient
+memo
+Geachte meneer Peen van Lint,
+
+hierbij ontvangt u de behoefte analyse. Ik heb u feedback  verwerkt. Graag ontvang ik van u akkoord om verder te kunnen met de volgende fase.
+Met vriendelijke groeten,
+
+1 Inleiding
+Geef hier kort aan waarom dit document gemaakt is.
+Dit document is gemaakt aan de hand van de behoefte van de klant en op basis hiervan wordt een functioneel ontwerp van gemaakt en een vernieuwende systeem.
+
+2 Achtergrondinformatie
+Geef hier een beschrijving van de huidige situatie.
+FitNu! is een jonge en dynamische fitnessorganisatie dat onlangs is gestart. Het bedrijf heeft twee vestigingen geopend en de organisatie wil groeien. FitNu! wil vooral extra service bieden aan haar klanten. Daarom beschikt het bedrijf over de modernste fitness- en cardioapparatuur. De meeste apparatuur kan via een netwerk worden gekoppeld aan een centrale server. Sporters kunnen zo hun resultaten opslaan en hun vorderingen bekijken. Beide vestigingen van FitNu! zijn moderne gebouwen. Er liggen in alle kamers en hallen kabelgoten voor netwerk en elektriciteit. Kleine ruimten zijn gereserveerd voor plaatsing van netwerkapparatuur.
+
+probleemstelling= knelpunt 
+functie overzicht= de functionaliteit van je knelpuntpunten uitleggen,waar het voor gaat dienen de functionaliteit.
+
+Technische 
+memo
+Geachte P.van.Leen
+Hierbij ontvangt u de technische document met uitgewerkte feedback.
+Indien u akkoord gaat wordt het project doorgezet en kunnen we beginnen met de volgende fase.
+Met vriendelijke groeten, 
+
+inleiding
+Het sportschool Fitnu! heeft naar aanleiding van de huidige situatie hun eisen en wensen vastgesteld. 
+De functionaliteit dat daarbij hoort ga ik in een technische document uitwerken.
+Dit document wordt gemaakt aan de hand van de  functioneel ontwerp.
+
+
+memo
+
+Dns
+ip adres ubuntu-server …….
+Met deze ipaddress is er een A-record aangemaakt genaamd Lamp
+De A-record dient ervoor om ip adres om te zetten in een naam bij deze heb ik het Lamp genoemd, dus op het moment dat je op internet surft en je typt lamp in dan krijg je Apache2 te zien en als je Lamp/phpinfo.php typt php te zien en als je Lamp/nextcloud typt dan krijg je nextcloud te zien.
+
+Ook is er een A-record aangemaakt dat gekoppeld is aan de ip adres van server2019
+
+DHCP
+Scope  192.168.70.10-192.168.70.210
+Ip plan Utrecht
+m
+ip plan Amsterdam
+scope 
+
+Services hierin alle commando's met uitleg wat het doet.
+
+
+Testrapport
+testen 
+
+powershell adds
+AD DS
+#
+# Windows PowerShell script for  AD DS Deployment
+#
+
+Import-Module ADDSDeployment
+Install-ADDSForest
+-CreateDnsDelegation:$false 
+-DatabasePath “C:\Windows\NTDS”
+-DomainMode “WinThreshold”
+-DomainName “Xprotex.com”
+-DomainNetbiosName “XPROTEX”
+-ForestMode “WinThreshold”
+-InstallDns:$true
+-LogPath “C:\Windows\NTDS”
+-NoRebootOnCompletion:$false
+-SysvolPath “C:\Windows\SYSVOL”
+-Force:$true
+
+Moscow
+Must have: een pre zonder dit project werkt niet
+
+Should have:Het heeft geen prioriteit zonder dit functioneerd het ook
+
+Could have:Waneer je tijd genoeg hebt, maar zonder dit functioneerd het ook.
+
+
+Won't have:Toekomst gerelateerd
+Bijv 
+•	In de toekomst: koppeling van hightech cardioapparatuur aan de servers.
+In de toekomst: koppeling van fitnessapparatuur aan het netwerk voor het verzamelen van gebruikersdata.
+
+
+
+
+
+
+
+
+
+
+
+
+
