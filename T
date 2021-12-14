@@ -33,7 +33,7 @@ ls -l
 index.html
 sudo cp index.html index.html2
 sudo rm index.html
-sudo mkdir index.html
+sudo touch index.html
 sudo nano index.html
 <DOCTYPE! HTML>
 
