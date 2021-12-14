@@ -27,8 +27,20 @@
 
 
 
+defaultpage weg halen
+cd /var/www/html
+ls -l
+index.html
+sudo cp index.html index.html2
+sudo rm index.html
+sudo mkdir index.html
+sudo nano index.html
+<DOCTYPE! HTML>
 
 
+
+
+ssh 
 
 
 
@@ -104,7 +116,17 @@ exit
 29.	sudo sed -i '/^memory_limit =/s/=.*/= 512M/' /etc/php/7.4/apache2/php.ini
 30.	sudo systemctl restart apache2
 
-virtual Host
+
+
+
+
+
+
+
+
+
+
+virtual Host aanmaken
 
 sudo mkdir -p /var/www/example.com/public_html
 sudo mkdir -p /var/www/test.com/public_html
@@ -176,6 +198,26 @@ sudo nano /etc/hosts
 127.0.1.1   guest-desktop
 your_server_IP example.com
 your_server_IP test.com
+
+
+
+commando naar pad voor VirtualHost
+6.	cd /var/www/html/
+7.	cd /etc/Apache2/sites-available 
+8.	sudo systemctl restart apache2
+9.	sudo nano nextcloud.conf
+10.	<VirtualHost *80>
+ServerName www.nextcloud.Assengraaf.nl
+ServerAlias nextcloud.Assengraaf.nl
+DocumentRoot /var/www/html/nextcloud
+
+<virtualHost>
+
+
+
+
+
+
 
 Test on client
 
@@ -346,6 +388,20 @@ Bijv
 •	In de toekomst: koppeling van hightech cardioapparatuur aan de servers.
 In de toekomst: koppeling van fitnessapparatuur aan het netwerk voor het verzamelen van gebruikersdata.
 
+
+
+
+Belangtijkste linux commando's
+
+ls -l) dient voor om de kijken wat er in pad zit
+
+ls -ld) 
+
+sudo -i) om als root in te loggen
+
+id) om de huidige identiteit te zien van je huidige account
+
+chmod) permisions wijzigen
 
 
 
