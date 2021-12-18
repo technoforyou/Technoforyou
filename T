@@ -616,7 +616,7 @@ Linux server een vaste IP adres•
 Werkstation via DHCP (Windows server)•
 Nextcloudvia DNS (A record aanmaken)•
 Uitleggen de commandsdie je hebt gebruikt 
-* Archiveren van gemaakte bestanden (directory structuur en zip file van maken)
+* Archiveren van gemaakte bestanden (directory structuur en zip file van maken) als zipbestand inleveren
 
 
 Technisch Ontwerp Services
@@ -647,7 +647,7 @@ Configt
                                                                     
 ipplan in Technische ontwerp
                 ip adrres       subnet          gateway                  0-255 1e en laatste mag niet gebruikt worden
-server linux    192.168.10.2    255.255.255.0   192.168.101.1            1-254
+server linux    192.168.10.2    255.255.255.0   192.168.10.1            1-254
 microsoft server
 printer
 wifi                                                                      1 gereserveerd voor gateway
@@ -657,7 +657,11 @@ werkstation                                                               11 t/m
                                                                           31-40 pin automaat
 									  
 									  
-									  
+mappenstructuur in to
+map groep leden rechten
+
+
+
 									  
 									  
 									  
