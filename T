@@ -28,6 +28,18 @@ naar pad /var/www/html/index.html
 
 
 
+cd /var/www/html/
+cd /etc/apache2/sites/-available
+sudo systemctl restart apache2
+sudo nano nextcloud.conf
+<VirtualHost *80>
+
+ServerName www.nextcloud.Assengraaf.nl
+ServerAlias nextcloud.Assengraaf.nl
+DocumentRoot /var/www/html/nextcloud
+
+<virtualHost>
+
 
 
 # Ensure that Apache listens on port 80
@@ -659,6 +671,16 @@ werkstation                                                               11 t/m
 									  
 mappenstructuur in to
 map groep leden rechten
+
+/8 255.0.0.0
+/16 255.255.0.0
+/24 255.255.255.0
+/25 255.255.255.128
+/26 255.255.255.192
+/27 255.255.255.224
+/28 255.255.255.240
+/29 255.255.255.248
+/30 255.255.255.252
 
 
 
