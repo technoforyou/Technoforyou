@@ -10,6 +10,21 @@
 
 
 
+
+
+
+
+nextcloud:
+
+nextcloud
+PASSWORRD
+
+nextcloud
+PASSWORD
+nextcloud
+localhost
+
+
 opdrachtgever: naam werkgever 
 Auteur: eigen naam
 
