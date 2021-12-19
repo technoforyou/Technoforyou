@@ -419,7 +419,9 @@ memo
 Dns
 ip adres ubuntu-server …….
 Met deze ipaddress is er een A-record aangemaakt genaamd Lamp
-De A-record dient ervoor om ip adres om te zetten in een naam bij deze heb ik het Lamp genoemd, dus op het moment dat je op internet surft en je typt lamp in dan krijg je Apache2 te zien en als je Lamp/phpinfo.php typt php te zien en als je Lamp/nextcloud typt dan krijg je nextcloud te zien.
+De A-record dient ervoor om ip adres om te zetten in een naam bij deze heb ik het Lamp genoemd, 
+dus op het moment dat je op internet surft en je typt lamp in dan krijg je Apache2 te zien en als je
+Lamp/phpinfo.php typt php te zien en als je Lamp/nextcloud typt dan krijg je nextcloud te zien.
 
 Ook is er een A-record aangemaakt dat gekoppeld is aan de ip adres van server2019
 
