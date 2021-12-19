@@ -26,6 +26,11 @@ naar pad /var/www/html/index.html
 /var/wwww/html/nextcloud/config/config.php
 
 
+installatie virtualhost:
+
+
+
+
 
 
 cd /var/www/html/
@@ -672,6 +677,7 @@ werkstation                                                               11 t/m
 mappenstructuur in to
 map groep leden rechten
 
+subnet:
 /8 255.0.0.0
 /16 255.255.0.0
 /24 255.255.255.0
