@@ -702,6 +702,11 @@ subnet:
 /30 255.255.255.252
 
 
+Apache activeren (sudo systemctl start apache2)
+Mysql activeren (sudo systemctl start mysql)
+Php activeren (sudo systemctl start php)
+ 
+
 
 									  
 									  
