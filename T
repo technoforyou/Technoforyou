@@ -672,6 +672,19 @@ pin automaat                                                              1 t/m 
 werkstation                                                               11 t/m 20 werkstations
                                                                           21-30 printers
                                                                           31-40 pin automaat
+6/7 bij probleemstelling
+Technisch Ontwerp
+Virtual Host nextcloud.Xprotex.eu
+Xprotex.eu zelfde IP
+
+IP PLAn 192.168.2.2
+Subnet Mask 255.255.255.0
+gateway 192.168.2.1
+range start ip 192.168.2.1
+end 192.168.2.14
+exclusion 192.168.2.13 en 192.168.2.14
+Mac adress intel network opdracht1 bestand altijd draad kiezen
+
 									  
 									  
 mappenstructuur in to
